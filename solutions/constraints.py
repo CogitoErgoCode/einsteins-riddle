@@ -1,5 +1,8 @@
 from constraint import *
-import pandas as pd
+# import pandas as pd
+# import numpy as np
+
+from pprint import pp
 
 def main():
     problem = Problem()
@@ -20,23 +23,17 @@ def main():
 
     # constraints: equal
     for i in (
-        ["brit"      , "red"    ],
-        ["swede"     , "dogs"   ],
-        ["dane"      , "tea"    ],
-        ["green"     , "coffee" ],
-        ["pallMall"  , "birds"  ],
-        ["yellow"    , "dunhill"],
-        ["blueMaster", "beer"   ],
-        ["german"    , "prince" ]
+        ["brit"      , "red"    ], ["swede"     , "dogs"   ],
+        ["dane"      , "tea"    ], ["green"     , "coffee" ],
+        ["pallMall"  , "birds"  ], ["yellow"    , "dunhill"],
+        ["blueMaster", "beer"   ], ["german"    , "prince" ]
     ):
         problem.addConstraint(lambda a, b: a == b, i)
 
     # constraints: next_to
     for i in (
-        ["blends"    , "cats"    ],
-        ["horses"    , "dunhill" ],
-        ["norwegian" , "blue"    ],
-        ["blends"    , "water"   ]
+        ["blends"    , "cats"    ], ["horses"    , "dunhill" ],
+        ["norwegian" , "blue"    ], ["blends"    , "water"   ]
     ):
         problem.addConstraint(lambda a, b: a == b - 1 or a == b + 1, i)
 
@@ -45,10 +42,8 @@ def main():
     problem.addConstraint(lambda a: a == 3       , ["milk"              ])
     problem.addConstraint(lambda a: a == 1       , ["norwegian"         ])
 
-    # get solution
     solution = problem.getSolution()
 
-    # My convoluted formatting method
     def order(key):
         for position, array in enumerate(variables.values()):
             if key in array:
@@ -59,13 +54,10 @@ def main():
             for i in range(1, max(solution.values())+1)
     ]
 
-    df = pd.DataFrame(
-        ordered,
-        index   = ["First" , "Second", "Third"  , "Fourth" , "Fifth"],
-        columns = ["Color:", "Race:" , "Smokes:", "Drinks:", "Pets:"]
-    ).transpose()
+    # transpose & format output
+    for i in map(list, zip(*ordered)):
+        print("{:10s} {:10s} {:10s} {:10s} {:10s}".format(*i))
 
-    print(df)
 
 if __name__ == "__main__":
     main()

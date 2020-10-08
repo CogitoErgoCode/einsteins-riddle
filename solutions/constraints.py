@@ -19,17 +19,17 @@ def main():
 
     # constraints: equal
     for i in (
-        ["brit"      , "red"    ], ["swede"     , "dogs"   ],
-        ["dane"      , "tea"    ], ["green"     , "coffee" ],
-        ["pallMall"  , "birds"  ], ["yellow"    , "dunhill"],
-        ["blueMaster", "beer"   ], ["german"    , "prince" ]
+        ["brit"      , "red"  ], ["swede" , "dogs"   ],
+        ["dane"      , "tea"  ], ["green" , "coffee" ],
+        ["pallMall"  , "birds"], ["yellow", "dunhill"],
+        ["blueMaster", "beer" ], ["german", "prince" ]
     ):
         problem.addConstraint(lambda a, b: a == b, i)
 
     # constraints: next_to
     for i in (
-        ["blends"    , "cats"    ], ["horses"    , "dunhill" ],
-        ["norwegian" , "blue"    ], ["blends"    , "water"   ]
+        ["blends"   , "cats"], ["horses", "dunhill"],
+        ["norwegian", "blue"], ["blends", "water"  ]
     ):
         problem.addConstraint(lambda a, b: a == b - 1 or a == b + 1, i)
 

@@ -9,9 +9,9 @@ def main():
         'pets'   : ['dogs'    , 'birds'  , 'cats'  , 'horses'    , 'fish'  ]
     }
 
-    equals  = lambda a,b: True if a == b else False
-    next_to = lambda a,b: True if a == b - 1 or a == b +1 else False
-    left_of = lambda a,b: True if a == b - 1 else False
+    equals  = lambda a,b: a == b
+    next_to = lambda a,b: a == b - 1 or a == b + 1
+    left_of = lambda a,b: a == b - 1
                         
     perm = list(permutations(range(1, 5+1)))
     for red, green, white, yellow, blue in perm:
@@ -23,19 +23,19 @@ def main():
                 continue
             for tea, coffee, milk, beer, water in perm:
                 # if not ( equals(dane, tea) and equals(green, coffee) and \
-                # 		 milk == 3         and norwegian == 1 ):
+                #          milk == 3         and norwegian == 1 ):
                 if not all([ equals(dane, tea), equals(green, coffee), 
                              milk == 3, norwegian == 1 ]):
                     continue
                 for pallMall, dunhill, blends, blueMaster, prince in perm:
                     # if not ( equals(yellow, dunhill) and equals(blueMaster, beer) and \
-                    # 		 equals(german, prince)  and next_to(blends, water) ):
+                    #          equals(german, prince)  and next_to(blends, water) ):
                     if not all([ equals(yellow, dunhill), equals(blueMaster, beer), 
                                  equals(german, prince), next_to(blends, water) ]):
                         continue
                     for dogs, birds, cats, horses, fish in perm:
                         # if not ( equals(swede, dogs)   and equals(pallMall, birds) and \
-                        # 		 next_to(blends, cats) and next_to(horses, dunhill) ):
+                        #          next_to(blends, cats) and next_to(horses, dunhill) ):
                         if not all([ equals(swede, dogs), equals(pallMall, birds), 
                                      next_to(blends, cats), next_to(horses, dunhill) ]):
                             continue

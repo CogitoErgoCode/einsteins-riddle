@@ -1,4 +1,4 @@
-Legend has it that this puzzle was created by Albert Einstein as a boy. Einstein said that only 2% of the world could solve it. Are you up for the challenge?
+Legend has it that this puzzle was created by Albert Einstein as a boy. Einstein said that only 2% of the world could solve it. Considering that there are 5!^5 or 24,883,200,000 combinations with only 1 correct solution, are you up for the challenge?
 
 # **Riddle**
 
